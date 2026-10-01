@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 520" role="img" aria-labelledby="title desc">
+  <title id="title">GateVio edge and cloud architecture</title>
+  <desc id="desc">Diagram showing LPR cameras, NVIDIA Jetson edge processing, local decisions, cloud management, and REST API integrations.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#10243a"/>
+      <stop offset="1" stop-color="#07111f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#02070d" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="980" height="520" rx="34" fill="#06101d"/>
+  <path d="M84 398c146-110 260-139 395-91 140 50 242 33 416-94" fill="none" stroke="#44d7b6" stroke-opacity=".22" stroke-width="86" stroke-linecap="round"/>
+  <g filter="url(#shadow)">
+    <rect x="70" y="92" width="200" height="150" rx="22" fill="url(#panel)" stroke="#1d3b59"/>
+    <rect x="390" y="70" width="220" height="180" rx="24" fill="url(#panel)" stroke="#44d7b6" stroke-width="2"/>
+    <rect x="724" y="92" width="190" height="150" rx="22" fill="url(#panel)" stroke="#1d3b59"/>
+    <rect x="390" y="314" width="220" height="126" rx="24" fill="url(#panel)" stroke="#1d3b59"/>
+  </g>
+  <g fill="none" stroke="#8aa4bf" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M270 166h104"/>
+    <path d="m357 147 19 19-19 19"/>
+    <path d="M610 166h98"/>
+    <path d="m691 147 19 19-19 19"/>
+    <path d="M500 250v49"/>
+    <path d="m481 282 19 19 19-19"/>
+  </g>
+  <g font-family="Inter, Arial, sans-serif">
+    <text x="170" y="135" text-anchor="middle" fill="#e7f6ff" font-size="24" font-weight="700">LPR Cameras</text>
+    <text x="170" y="174" text-anchor="middle" fill="#a9bbcc" font-size="17">IR, exposure control,</text>
+    <text x="170" y="199" text-anchor="middle" fill="#a9bbcc" font-size="17">plates and vehicle images</text>
+    <text x="500" y="122" text-anchor="middle" fill="#e7f6ff" font-size="24" font-weight="700">Edge AI</text>
+    <text x="500" y="162" text-anchor="middle" fill="#44d7b6" font-size="18" font-weight="700">NVIDIA Jetson</text>
+    <text x="500" y="193" text-anchor="middle" fill="#a9bbcc" font-size="17">Decision in &lt;1 second,</text>
+    <text x="500" y="218" text-anchor="middle" fill="#a9bbcc" font-size="17">works offline on site</text>
+    <text x="819" y="135" text-anchor="middle" fill="#e7f6ff" font-size="24" font-weight="700">Cloud Command</text>
+    <text x="819" y="174" text-anchor="middle" fill="#a9bbcc" font-size="17">Multi-site dashboards,</text>
+    <text x="819" y="199" text-anchor="middle" fill="#a9bbcc" font-size="17">analytics and audit trails</text>
+    <text x="500" y="361" text-anchor="middle" fill="#e7f6ff" font-size="24" font-weight="700">REST API</text>
+    <text x="500" y="399" text-anchor="middle" fill="#a9bbcc" font-size="17">Connects to access, payment,</text>
+    <text x="500" y="424" text-anchor="middle" fill="#a9bbcc" font-size="17">border and traffic systems</text>
+  </g>
+  <g fill="#44d7b6">
+    <circle cx="98" cy="438" r="5"/>
+    <circle cx="131" cy="438" r="5"/>
+    <circle cx="164" cy="438" r="5"/>
+    <circle cx="817" cy="393" r="5"/>
+    <circle cx="850" cy="393" r="5"/>
+    <circle cx="883" cy="393" r="5"/>
+  </g>
+</svg>
