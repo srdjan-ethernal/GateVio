@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GateVio - AI vehicle access and traffic intelligence</title>
     <meta name="description" content="GateVio provides AI vehicle recognition and access intelligence for borders, events, highways and urban zones.">
-    <meta http-equiv="refresh" content="0; url=./en/">
-    <link rel="canonical" href="https://gatevio.com/en/">
+    <link rel="canonical" href="https://gatevio.com/">
     <link rel="alternate" hreflang="en" href="https://gatevio.com/en/">
     <link rel="alternate" hreflang="sr" href="https://gatevio.com/sr/">
     <link rel="alternate" hreflang="de" href="https://gatevio.com/de/">
@@ -17,6 +16,88 @@
     <link rel="alternate" hreflang="zh-Hans" href="https://gatevio.com/zh/">
     <link rel="alternate" hreflang="x-default" href="https://gatevio.com/en/">
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+    <script>
+      (function () {
+        var supported = ["en", "sr", "de", "fr", "es", "ar", "ru", "zh"];
+        var storageKey = "gatevio-language";
+        var languageMap = {
+          en: "en", sr: "sr", bs: "sr", hr: "sr", cnr: "sr", sh: "sr",
+          de: "de", fr: "fr", es: "es", ar: "ar", ru: "ru", zh: "zh"
+        };
+        var timeZoneRules = [
+          [/^Europe\/(Belgrade|Sarajevo|Podgorica|Skopje|Zagreb)$/i, "sr"],
+          [/^Europe\/(Berlin|Vienna|Zurich|Vaduz|Luxembourg)$/i, "de"],
+          [/^Europe\/(Paris|Brussels|Monaco)$/i, "fr"],
+          [/^Europe\/(Madrid|Andorra|Gibraltar)$/i, "es"],
+          [/^Europe\/(Moscow|Kaliningrad|Samara|Volgograd)$/i, "ru"],
+          [/^(Asia\/(Shanghai|Hong_Kong|Macau|Taipei|Chongqing|Urumqi)|PRC|ROC)$/i, "zh"],
+          [/^Asia\/(Riyadh|Dubai|Qatar|Bahrain|Kuwait|Muscat|Amman|Beirut|Damascus|Baghdad)$/i, "ar"],
+          [/^(Europe\/London|America\/(New_York|Chicago|Denver|Los_Angeles|Toronto|Vancouver)|Australia\/)/i, "en"]
+        ];
+
+        function normalize(value) {
+          var code = String(value || "").trim().toLowerCase().replace("_", "-");
+          if (!code) return "";
+          if (code.indexOf("zh") === 0) return "zh";
+          if (languageMap[code]) return languageMap[code];
+          var base = code.split("-")[0];
+          return languageMap[base] || (supported.indexOf(base) > -1 ? base : "");
+        }
+
+        function fromBrowser() {
+          var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || navigator.userLanguage];
+          for (var i = 0; i < list.length; i += 1) {
+            var match = normalize(list[i]);
+            if (match) return match;
+          }
+          return "";
+        }
+
+        function fromTimeZone() {
+          var zone = "";
+          try {
+            zone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+          } catch (error) {}
+          for (var i = 0; i < timeZoneRules.length; i += 1) {
+            if (timeZoneRules[i][0].test(zone)) return timeZoneRules[i][1];
+          }
+          return "";
+        }
+
+        function savedLanguage() {
+          try {
+            return normalize(window.localStorage.getItem(storageKey));
+          } catch (error) {
+            return "";
+          }
+        }
+
+        var params = new URLSearchParams(window.location.search);
+        var requested = normalize(params.get("lang"));
+        var target = requested || savedLanguage() || fromBrowser() || fromTimeZone() || "en";
+
+        try {
+          window.localStorage.setItem(storageKey, target);
+        } catch (error) {}
+
+        window.location.replace("./" + target + "/" + (window.location.hash || ""));
+      }());
+    </script>
   </head>
-  <body><main><p><a href="./en/">Continue to GateVio in English</a></p></main></body>
+  <body>
+    <main>
+      <h1>GateVio</h1>
+      <p>Select language:</p>
+      <ul>
+        <li><a href="./en/">English</a></li>
+        <li><a href="./sr/">Srpski</a></li>
+        <li><a href="./de/">Deutsch</a></li>
+        <li><a href="./fr/">Français</a></li>
+        <li><a href="./es/">Español</a></li>
+        <li><a href="./ar/">العربية</a></li>
+        <li><a href="./ru/">Русский</a></li>
+        <li><a href="./zh/">中文</a></li>
+      </ul>
+    </main>
+  </body>
 </html>

@@ -1,9 +1,20 @@
 (function () {
+  const supportedLanguages = ["en", "sr", "de", "fr", "es", "ar", "ru", "zh"];
+  const languagePreferenceKey = "gatevio-language";
+
   const languageSelect = document.querySelector("[data-language-select]");
   if (languageSelect) {
     languageSelect.addEventListener("change", () => {
       const value = languageSelect.value;
       if (value) {
+        const match = value.match(/\/(en|sr|de|fr|es|ar|ru|zh)\//);
+        if (match && supportedLanguages.includes(match[1])) {
+          try {
+            window.localStorage.setItem(languagePreferenceKey, match[1]);
+          } catch (error) {
+            // Language persistence is optional; navigation should still work.
+          }
+        }
         window.location.href = value;
       }
     });
