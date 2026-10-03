@@ -2,6 +2,14 @@
 
 This is a deployable static website for `gatevio.com`.
 
+## GitHub Pages
+
+The public preview is served from `main` at `https://srdjan-ethernal.github.io/GateVio/`.
+Design previews are at `https://srdjan-ethernal.github.io/GateVio/design-proposals/`.
+The `.nojekyll` marker publishes the existing static files without Jekyll processing.
+All language navigation, assets and design preview links use relative paths and work under `/GateVio/` or on a custom domain.
+Canonical metadata remains configured for the intended production domain, `gatevio.com`; the custom domain is not connected by this setup.
+
 ## Languages
 
 The site now includes first-class static pages for:
